@@ -1,5 +1,3 @@
-import seed from '../data/backup.json'
-
 const STORAGE_KEY = 'taskflow.data'
 
 export const PRIORITIES = {
@@ -31,15 +29,15 @@ export function formatDay(key) {
   })
 }
 
-// Dữ liệu có dạng { "YYYY-MM-DD": [task, ...] }. Lần đầu dùng sẽ nạp từ bản sao lưu.
+// Dữ liệu có dạng { "YYYY-MM-DD": [task, ...] }. Lần đầu dùng sẽ trống; nhập bản sao lưu bằng nút "Nhập JSON".
 export function loadData() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY)
     if (saved) return JSON.parse(saved)
   } catch {
-    // dữ liệu hỏng: dùng dữ liệu mẫu
+    // dữ liệu hỏng: bắt đầu lại từ trống
   }
-  return structuredClone(seed)
+  return {}
 }
 
 export function saveData(data) {

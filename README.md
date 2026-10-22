@@ -8,7 +8,7 @@ Taskflow - quản lý công việc theo ngày. Xây dựng bằng React + Vite.
 - Đánh dấu hoàn thành, xóa công việc
 - Chuyển các việc chưa xong từ ngày cũ sang ngày đang xem
 - Xuất / nhập dữ liệu dạng JSON (`taskflow-backup-YYYY-MM-DD.json`)
-- Dữ liệu lưu trong `localStorage`; lần đầu mở sẽ nạp từ `src/data/backup.json`
+- Dữ liệu chỉ lưu trong `localStorage` của trình duyệt, không nằm trong repo; dùng "Nhập JSON" để khôi phục từ file sao lưu
 
 ## Bắt đầu
 
@@ -24,4 +24,7 @@ npm run lint     # kiểm tra mã nguồn
 - `src/App.jsx` – state chính, chuyển việc tồn đọng, xuất/nhập
 - `src/lib/tasks.js` – lưu trữ, sắp xếp, tiện ích ngày
 - `src/components/` – `DateBar`, `TaskForm`, `TaskList`
-- `src/data/backup.json` – dữ liệu khôi phục từ site cũ
+
+## Triển khai
+
+Mỗi lần push vào `main`, workflow `.github/workflows/deploy.yml` build và deploy lên GitHub Pages (cần bật Settings → Pages → Source: GitHub Actions). Trang Pages là công khai nên **không** đưa dữ liệu cá nhân vào mã nguồn.
